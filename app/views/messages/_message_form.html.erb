@@ -1,0 +1,19 @@
+<div class="border-box left-side">
+    <h2>New Message</h2>
+    <form ng-submit="sendMessage()">
+        <div class="form-group">
+            <label for="phone-number">Phone Number:</label>
+            <input type="text" id="to" ng-model="newMessage.to">
+        </div>
+
+        <div class="form-group">
+            <label for="text">Message:</label>
+            <textarea id="text" ng-model="newMessage.text"></textarea>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Submit</button>
+            <button type="button" ng-click="showNewMessageForm = false">Cancel</button>
+        </div>
+    </form>
+</div>
