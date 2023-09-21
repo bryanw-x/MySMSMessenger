@@ -1,10 +1,26 @@
-<h1>All Messages</h1>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script>
+    var app = angular.module('myApp', []);
 
-<% @messages.each do |message| %>
-  <div>
-    <strong>To:</strong> <%= message.to %><br>
-    <strong>Message:</strong> <%= message.text %><br>
-    <strong>Sent:</strong> <%= message.created_at %>
+    app.controller('MessagesController', function($scope, $http) {
+      $http.get('/messages.json').then(function(response) {
+        $scope.messages = response.data;
+      });
+    });
+  </script>
+
+<body ng-app="myApp">
+  <div ng-controller="MessagesController">
+
+    <h1>All Messages</h1>
+
+    <div ng-repeat="message in messages">
+      <strong>To:</strong> {{ message.to }}<br>
+      <strong>Message:</strong> {{ message.text }}<br>
+      <strong>Sent:</strong> {{ message.created_at | date:'medium' }}
+      <hr>
+    </div>
+
   </div>
-  <hr>
-<% end %>
+</body>
+

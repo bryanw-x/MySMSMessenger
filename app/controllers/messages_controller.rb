@@ -14,7 +14,12 @@ class MessagesController < ApplicationController
 
  def index
   @messages = current_user.messages.order(created_at: :desc)
+  respond_to do |format|
+    format.html
+    format.json { render json: @messages }
+  end
  end
+
 
  def new
   @message = Message.new
