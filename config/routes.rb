@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :messages, only: [:new, :create, :index]
 
   root to: 'home#index'
+
 end

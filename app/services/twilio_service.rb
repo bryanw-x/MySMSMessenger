@@ -9,7 +9,10 @@ module TwilioService
    client.messages.create(
      from: PHONE_NUMBER,
      to: to,
-     body: text
+     body: text,
    )
+ rescue Twilio::REST::RestError => e
+   Rails.logger.error "Twilio Error: #{e.message}"
+   nil
  end
 end
