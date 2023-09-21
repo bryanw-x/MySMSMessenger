@@ -1,0 +1,10 @@
+<h1>All Messages</h1>
+
+<% @messages.each do |message| %>
+  <div>
+    <strong>To:</strong> <%= message.to %><br>
+    <strong>Message:</strong> <%= message.text %><br>
+    <strong>Sent:</strong> <%= message.created_at %>
+  </div>
+  <hr>
+<% end %>

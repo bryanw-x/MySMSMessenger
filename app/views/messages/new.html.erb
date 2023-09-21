@@ -1,0 +1,12 @@
+<%= form_for @message, url: messages_path do |f| %>
+<p>New Message</p>
+  <div>
+    <%= f.label :to, "Phone Number" %>
+    <%= f.text_field :to %>
+  </div>
+  <div>
+    <%= f.label :text, "Message" %>
+    <%= f.text_area :text %>
+  </div>
+  <%= f.submit "Submit" %>
+<% end %>
