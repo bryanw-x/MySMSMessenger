@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_21_145531) do
+ActiveRecord::Schema.define(version: 2023_09_22_020540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2023_09_21_145531) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "to"
+    t.string "recipient_phone"
     t.string "status"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end

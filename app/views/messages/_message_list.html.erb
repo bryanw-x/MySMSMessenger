@@ -1,8 +1,8 @@
 <div class="border-box right-side">
-    <h1>All Messages</h1>
+    <h1>Message History ({{ messageCount }})</h1>
     <div ng-repeat="message in messages">
         <div class="message-info">
-            <div class="phone-number">{{ message.to }}</div>
+            <div class="phone-number">{{ message.recipient_phone }}</div>
             <div>{{ message.created_at | date:'medium' }}</div>
         </div>
         <div class="message-box">
