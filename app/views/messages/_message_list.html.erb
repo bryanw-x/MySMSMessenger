@@ -3,10 +3,11 @@
     <div ng-repeat="message in messages">
         <div class="message-info">
             <div class="phone-number">{{ message.recipient_phone }}</div>
-            <div>{{ message.created_at | date:'medium' }}</div>
+            <div class="date-created">{{ message.created_at | date:'medium' }}</div>
         </div>
         <div class="message-box">
             {{ message.text }}
         </div>
+        <div class="character-count">{{ message.text.length }} out of 250</div>
     </div>
 </div>
