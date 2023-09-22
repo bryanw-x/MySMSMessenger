@@ -6,7 +6,7 @@ app.config(['$httpProvider', function ($httpProvider) {
 
 app.controller('MessagesController', ['$scope', '$http', function ($scope, $http) {
     $scope.newMessage = {
-        to: '',
+        recipient_phone: '',
         text: ''
     };
 
@@ -14,7 +14,7 @@ app.controller('MessagesController', ['$scope', '$http', function ($scope, $http
         $http.post('/messages.json', $scope.newMessage).then(function (response) {
             $scope.messages.push(response.data);
             $scope.newMessage = {
-                to: '',
+                recipient_phone: '',
                 text: ''
             };
             grabMessagesCount();
