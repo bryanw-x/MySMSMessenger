@@ -17,6 +17,8 @@ app.controller('MessagesController', function ($scope, $http) {
                 to: '',
                 text: ''
             };
+            grabMessagesCount();
+            grabMessages();
         }, function (error) {
             console.error('Error:', error);
         });
