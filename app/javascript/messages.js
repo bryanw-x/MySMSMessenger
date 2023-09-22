@@ -4,7 +4,7 @@ app.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.common['X-CSRF-Token'] = angular.element('meta[name=csrf-token]').attr('content');
 }]);
 
-app.controller('MessagesController', function ($scope, $http) {
+app.controller('MessagesController', ['$scope', '$http', function ($scope, $http) {
     $scope.newMessage = {
         to: '',
         text: ''
@@ -47,4 +47,4 @@ app.controller('MessagesController', function ($scope, $http) {
 
     grabMessagesCount();
     grabMessages();
-});
+}]);

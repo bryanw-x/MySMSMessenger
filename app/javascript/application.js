@@ -1,6 +1,6 @@
 var app = angular.module('myApp', []);
 
-app.controller('MessagesController', function($scope, $http) {
+app.controller('MessagesController', ['$scope', '$http', function($scope, $http) {
   $scope.messages = [];
   $scope.newMessage = {};
   $scope.showNewMessageForm = false;
@@ -21,4 +21,4 @@ app.controller('MessagesController', function($scope, $http) {
   };
 
   $scope.loadMessages();
-});
+}]);
