@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MySMSMessenger</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>MySMSMessenger</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <meta name="csrf-token" content="<%= form_authenticity_token %>">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <%= javascript_pack_tag 'application' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <meta name="csrf-token" content="<%= form_authenticity_token %>">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <%= javascript_pack_tag 'application' %>
+</head>
 
-  <body>
-    <% if user_signed_in? %>
-      <%= form_tag(destroy_user_session_path, method: :delete) do %>
-        <%= submit_tag 'Sign Out' %>
+<body>
+  <div class="header-container">
+      <h1>MY SMS MESSENGER</h1>
+  </div>
+
+  <div class="auth-actions">
+      <% if user_signed_in? %>
+          <%= form_tag(destroy_user_session_path, method: :delete) do %>
+              <%= submit_tag 'Sign Out' %>
+          <% end %>
+      <% else %>
+          <%= link_to "Sign In", new_user_session_path %>
       <% end %>
-    <% else %>
-      <%= link_to "Sign In", new_user_session_path %>
-    <% end %>
-    <%= yield %>
-  </body>
+  </div>
+
+  <%= yield %>
+</body>
 </html>

@@ -1,6 +1,7 @@
 <div class="border-box left-side">
     <h2>New Message</h2>
     <form ng-submit="sendMessage()">
+
         <div class="form-group">
             <label for="phone-number">Phone Number:</label>
             <input type="text" id="recipient_phone" ng-model="newMessage.recipient_phone">
@@ -11,11 +12,10 @@
             <textarea id="text" ng-model="newMessage.text"></textarea>
         </div>
 
-        <div class="form-group">
-            <button type="submit">Submit</button>
-            <%# <button type="button" ng-click="showNewMessageForm = false">Clear</button> %>
-            <%# <button ng-click="clear()">Clear</button> %>
-            <button type="button" ng-click="clear()">Clear</button>
+        <div class="form-group button-group">
+            <button type="button" ng-click="clear()" class="clear-btn">Clear</button>
+            <button type="submit" class="submit-btn">Submit</button>
         </div>
+
     </form>
 </div>
