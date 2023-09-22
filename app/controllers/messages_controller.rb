@@ -5,7 +5,8 @@ def create
  @message = current_user.messages.build(message_params)
 
  if @message.save
-   TwilioService.send_sms(to: @message.recipient_phone, text: @message.text)
+   TwilioService.send_sms(recipient_phone: @message.recipient_phone, text: @message.text)
+   redirect_to messages_path, notice: 'Message sent!'
  else
    flash.now[:alert] = @message.errors.full_messages.join(', ')
    render :new
