@@ -4,14 +4,15 @@ class MessagesController < ApplicationController
  def create
    @message = current_user.messages.build(message_params)
 
-   if valid_phone_number?(@message.recipient_phone) && @message.save
-     TwilioService.send_sms(recipient_phone: @message.recipient_phone, text: @message.text)
-   else
-     if valid_phone_number?(@message.recipient_phone)
-       raise RuntimeError, @message.errors.full_messages.join(', ')
+   if @message.text.present? && valid_phone_number?(@message.recipient_phone)
+     if @message.save
+       TwilioService.send_sms(recipient_phone: @message.recipient_phone, text: @message.text)
+       redirect_to(messages_path)
      else
-       raise RuntimeError, 'Invalid phone number'
+       raise RuntimeError, 'Error while saving the message'
      end
+   else
+     raise RuntimeError, 'Invalid number or Text is blank'
    end
  end
 

@@ -32,7 +32,7 @@ app.controller('MessagesController', ['$scope', '$http', function ($scope, $http
             },
             function (error) {
                 console.error('Error:', error);
-                $scope.errorMessage = 'An error occurred while sending the message. Please try again later.';
+                $scope.errorMessage = 'Can not save!';
             }
         );
     };
