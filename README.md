@@ -1,24 +1,32 @@
-# README
+# MySMS Messenger
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+MySMS Messenger is a web application that allows users to send and receive SMS messages. 
+The frontend of the app is built using AngularJS, and the backend API is developed with Ruby on Rails. 
 
-Things you may want to cover:
+You can access the live demo of MySMS Messenge [here.](https://mysms-messenger-demo-b638be784944.herokuapp.com/)
 
-* Ruby version
+## Features
 
-* System dependencies
+- Send SMS messages through the app.
+- Messages are stored in a database managed by the backend.
+- View previously sent messages through a dedicated API endpoint.
+- Authentication for user sessions (Bonus 1).
+- Deployment of the app to a live demo (Bonus 3).
 
-* Configuration
+## Getting Started
 
-* Database creation
+### Prerequisites
 
-* Database initialization
+- Ruby version: ruby 3.0.6
+- Database: PostgreSQL
 
-* How to run the test suite
+### Installation
 
-* Services (job queues, cache servers, search engines, etc.)
+# Install Ruby gems
+bundle install
 
-* Deployment instructions
+# Create and migrate the database
+rails db:create
+rails db:migrate
 
-* ...
+rails server
