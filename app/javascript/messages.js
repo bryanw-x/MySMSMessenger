@@ -10,24 +10,42 @@ app.controller('MessagesController', ['$scope', '$http', function ($scope, $http
         text: ''
     };
 
+    $scope.errorMessage = '';
+    $scope.messages = [];
+
     $scope.sendMessage = function () {
-        $http.post('/messages.json', $scope.newMessage).then(function (response) {
-            $scope.messages.push(response.data);
-            $scope.newMessage = {
-                recipient_phone: '',
-                text: ''
-            };
-            grabMessagesCount();
-            grabMessages();
-        }, function (error) {
-            console.error('Error:', error);
-        });
+        if (!isValidPhoneNumber($scope.newMessage.recipient_phone)) {
+            $scope.errorMessage = 'Invalid phone number';
+            return;
+        }
+
+        $http.post('/messages.json', $scope.newMessage).then(
+            function (response) {
+                $scope.messages.push(response.data);
+                $scope.newMessage = {
+                    recipient_phone: '',
+                    text: ''
+                };
+                grabMessagesCount();
+                grabMessages();
+                $scope.errorMessage = '';
+            },
+            function (error) {
+                console.error('Error:', error);
+                $scope.errorMessage = 'An error occurred while sending the message. Please try again later.';
+            }
+        );
     };
 
-    $scope.clear = function() {
-        $scope.newMessage.recipient_phone= '';
+    $scope.clear = function () {
+        $scope.newMessage.recipient_phone = '';
         $scope.newMessage.text = '';
+        $scope.errorMessage = '';
     };
+
+    function isValidPhoneNumber(phoneNumber) {
+        return /^\d{10}$/.test(phoneNumber);
+    }
 
     function grabMessagesCount() {
         $http.get('/messages/count.json').then(function (response) {
