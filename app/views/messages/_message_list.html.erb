@@ -3,7 +3,7 @@
     <div ng-repeat="message in messages">
         <div class="message-info">
             <div class="phone-number">{{ message.recipient_phone }}</div>
-            <div class="date-created">{{ message.created_at | date:'medium' }}</div>
+            <div class="date-created">{{ message.created_at | date:'EEEE' }}, {{ message.created_at | date:'medium' }}</div>
         </div>
         <div class="message-box">
             {{ message.text }}
