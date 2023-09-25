@@ -16,12 +16,11 @@ ActiveRecord::Schema.define(version: 2023_09_22_032808) do
   enable_extension "plpgsql"
 
   create_table "messages", force: :cascade do |t|
-    t.string "text"
+    t.string "text", null: false
+    t.string "recipient_phone", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "recipient_phone"
-    t.string "status"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 

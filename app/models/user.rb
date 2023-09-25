@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_many :messages
   validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validates :email, presence: true, if: :will_save_change_to_email?
+  validates :email, presence: true
 end

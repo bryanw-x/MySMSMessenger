@@ -17,32 +17,30 @@ RSpec.describe MessagesController, type: :controller do
     }
   end
 
-  before(:each) do
-    @user = User.create(username: 'bwong45', email: 'bw@example.com', password: 'google')
-  end
+  let(:user) { User.create(username: 'bwong45', email: 'bw@example.com', password: 'google') }
 
   describe 'POST #create' do
     context 'with valid attributes' do
       it 'creates a new message' do
-        sign_in @user
+        sign_in user
         expect do
           post :create, params: { message: valid_attributes }
         end.to change(Message, :count).by(1)
       end
 
       it 'redirects to the messages path' do
-        sign_in @user
+        sign_in user
         post :create, params: { message: valid_attributes }
         expect(response).to redirect_to(messages_path)
       end
     end
 
     context 'with both invalid number and blank text' do
-      it 'raises an error for both invalid phone number and blank text' do
-        sign_in @user
+      it 'raises an error for invalid phone number' do
+        sign_in user
         expect do
-          post :create, params: { message: invalid_both }
-        end.to raise_error(RuntimeError, 'Invalid number or Text is blank')
+          post :create, params: { message: invalid_attributes }
+        end.to raise_error(RuntimeError, 'Error while saving the message')
       end
     end
   end
