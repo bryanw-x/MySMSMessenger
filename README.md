@@ -27,6 +27,7 @@ bundle install
 
 # Create and migrate the database
 rails db:create
+
 rails db:migrate
 
 rails server
