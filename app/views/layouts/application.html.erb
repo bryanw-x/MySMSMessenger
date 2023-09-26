@@ -18,14 +18,13 @@
       <h1>MY SMS MESSENGER</h1>
   </div>
 
-<div class="auth-actions">
+  <%= yield %>
+  <div class="auth-actions">
     <% if user_signed_in? %>
         <%= form_tag(destroy_user_session_path, method: :delete) do %>
             <%= submit_tag 'Sign Out' %>
         <% end %>
     <% end %>
 </div>
-
-  <%= yield %>
 </body>
 </html>
